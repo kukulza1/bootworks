@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원목록</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+   <div id="container">
+         <h2>회원목록</h2>
+          <table class="memberlist">
+           <thead>
+            <tr>
+             <th>번호</th>
+             <th>이메일</th>
+             <th>비번</th>
+             <th>이름</th>
+             <th>나이</th>
+            </tr>
+           </thead>
+           
+           <tbody>
+            <tr th:each="member: ${memberlist}">
+             <td th:text="${member.id}"></td>
+             <td th:text="${member.memberEmail}"></td>
+             <td th:text="${member.memberPasswd}"></td>
+             <td th:text="${member.memberName}"></td>
+             <td th:text="${member.memberAge}"></td>
+             <td><a th:href="@{|/member/${member.id}|}">조회</a></td>
+             
+             <!-- 버티컬바(|) 자료형을 유지시켜줌 -->
+             <td><a th:href="@{|/member/delete/${member.id}|}" 
+                   onclick="return confirm('해당회원을 삭제하시겠습니까?')">삭제</a></td>
+                    <a href="/">목록으로</a>
+            </tr>
+           </tbody>          
+          </table>                
+   </div>
+</body>
+</html>
