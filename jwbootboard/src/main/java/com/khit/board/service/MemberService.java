@@ -1,6 +1,7 @@
 package com.khit.board.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.khit.board.dto.MemberDTO;
 import com.khit.board.entity.Member;
+import com.khit.board.exception.BootBoardException;
 import com.khit.board.repository.MemberRepository;
 
 import lombok.AllArgsConstructor;
@@ -42,10 +44,13 @@ public class MemberService {
 
 	public MemberDTO findById(Long id) {
 		//findById().get();
-		    Member member =  mr.findById(id).get();
-		    MemberDTO memberDTO = MemberDTO.toSaveDTO(member);
-		    
-		return memberDTO;
+		   Optional<Member> member =  mr.findById(id);
+		   if(member.isPresent()) {
+			   MemberDTO memberDTO = MemberDTO.toSaveDTO(member.get());
+			   return memberDTO;
+		   }else {
+			   throw new BootBoardException("찾는 데이터가  없습니다.");// BootBoardException.java
+		   }		   		    		
 	}
 
 	public void delete(Long id) {
@@ -78,6 +83,17 @@ public class MemberService {
 	public void update(MemberDTO memberDTO) {
 		Member member = Member.toSaveEntity2(memberDTO);
             mr.save(member);		
+	}
+
+	public String ckeckEmail(String memberEmail) {
+		
+	Optional<Member> findmember =	mr.findByMemberEmail(memberEmail);
+	if(findmember.isEmpty()) {
+		return "OK";
+	}else {
+		return "No";
+	}
+		
 	}
 
 }

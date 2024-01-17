@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.khit.board.dto.MemberDTO;
 import com.khit.board.entity.Member;
@@ -64,6 +65,7 @@ public class MemberController {
 		MemberDTO loginmember = memberService.login(memberDTO);
 		if(loginmember != null) {
 			session.setAttribute("sessionEmail", loginmember.getMemberEmail());
+			session.setAttribute("sessionName", loginmember.getMemberName());
 			return"main";
 		}else {
 			String error ="아이디나 비번을 확인해주세요";
@@ -90,6 +92,16 @@ public class MemberController {
 	public String updateMember(@ModelAttribute MemberDTO memberDTO) {
 		memberService.update(memberDTO);
 		return "redirect:/member/"+memberDTO.getId();
+	}
+	@PostMapping("/member/check-email")
+	public @ResponseBody String checkEmail(@RequestParam("memberEmail")String memberEmail) {
+		String resultText = memberService.ckeckEmail(memberEmail);
+		if(resultText.equals("OK")) {
+			return resultText;
+		}else {
+			return null;
+		}
+	
 	}
 
 }

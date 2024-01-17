@@ -2,14 +2,21 @@ package com.khit.board.entity;
 
 import com.khit.board.dto.MemberDTO;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Data
 @Table(name = "tbl_member")
 @Entity
@@ -30,16 +37,25 @@ public class Member {
 	private int memberAge;
 	
 	//dto를 매개변수로 받아서 엔티티에 저장하는 메서드 생성
-	public static Member toSaveEntity(MemberDTO memberDTO) {
-		Member member = new Member();
+public static Member toSaveEntity(MemberDTO memberDTO) {
+		/*Member member = new Member();
 		member.setMemberEmail(memberDTO.getMemberEmail());
 		member.setMemberPasswd(memberDTO.getMemberPasswd());
 		member.setMemberName(memberDTO.getMemberName());
-		member.setMemberAge(memberDTO.getMemberAge());
-		
+		member.setMemberAge(memberDTO.getMemberAge());*/
+	
+	//builder()방식	
+	   Member member = Member.builder()
+			    .memberEmail(memberDTO.getMemberEmail())
+			    .memberPasswd(memberDTO.getMemberPasswd())
+			    .memberName(memberDTO.getMemberName())
+			    .memberAge(memberDTO.getMemberAge()).build();
+	
 		return member;
 		
 	}
+	
+	
 	public static Member toSaveEntity2(MemberDTO memberDTO) {
 		Member member = new Member();
 		member.setId(memberDTO.getId());

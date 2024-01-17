@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>글쓰기</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<div id="container">
+		<h2>글쓰기</h2>
+		<form th:action="@{/board/write}" method="post"
+		   th:object="${boardDTO}"> 
+		 
+		   <div th:if="${#fields.hasAnyErrors()}">
+		   <div th:each="err: ${#fields.allErrors()}"
+		    th:text="${err}"></div>
+		   </div>
+		   
+		 <table class="tbl_write">
+		 <tbody>
+		   <tr>
+		   <td> <input type="text" th:field="*{boardTitle}"
+		      placeholder="글제목"></td>
+		   </tr>
+		     <!-- th:field="*{boardTitle}" name 속성 역할도 하고 제목을 유치시키는 기능을함 -->
+		   <tr>
+		   <td><input type="text" name="boardWriter" placeholder="글쓴이"
+		         th:value="${session.sessionName}"></td>
+		   </tr>
+		   
+		   <tr>
+		   <td><textarea rows="5" cols="50" th:field="*{boardContent}"
+		     placeholder="글내용"></textarea></td>
+		   </tr>
+		   <tr>
+		   <td>
+		   <input type="submit" value="등록">
+		   <input type="submit" value="취소">
+		   </td>
+		   </tr>
+		 </tbody>
+		   
+		 </table>
+		</form>
+			
+	</div>
+</body>
+</html>

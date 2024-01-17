@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<title>수정하기</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="wrap">
+        <h2>글수정</h2>
+        <form th:action="@{/board/update}" method="post">
+        <input type="hidden" name="id" th:value="${board.id}">
+        <input type="hidden" name="boardhit" th:value="${board.boardhit}">
+        <table class="tbl_write">
+         
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" name="boardTitle" th:value="${board.boardTitle}" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="boardWriter" th:value="${board.boardWriter}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea rows="5" cols="50" name="boardContent" th:text="${board.boardContent}" ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span th:text="'조회수 ' + ${board.boardhit}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span th:text="'작성일 ' + ${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <span th:if="${session.sessionName == board.boardWriter}">
+                        <input type="submit" value="저장">
+                        <a th:href="@{|/board/delete/${board.id}|}"><button type="button" 
+                        onclick="return confirm('삭제하시겠습니까?')"> 삭제</button></a>
+                        </span>
+                        <a th:href="@{/board/list}"><button type="button">목록</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+</body>
+</html>

@@ -31,8 +31,9 @@
              <!-- 버티컬바(|) 자료형을 유지시켜줌 -->
              <td><a th:href="@{|/member/delete/${member.id}|}" 
                    onclick="return confirm('해당회원을 삭제하시겠습니까?')">삭제</a></td>
-                    <a href="/">목록으로</a>
+                    
             </tr>
+            <a th:href="@{/}">목록으로</a>
            </tbody>          
           </table>                
    </div>
