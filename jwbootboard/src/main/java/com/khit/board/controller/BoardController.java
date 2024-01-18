@@ -2,7 +2,9 @@ package com.khit.board.controller;
 
 import java.util.List;
 
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,6 +62,27 @@ public class BoardController {
 	   model.addAttribute("board", boardDTO);
 	return "/board/detail";
 	   
+   }
+   // /board/pagelist?page=0
+   // /board/pagelist
+   @GetMapping("/pagelist")
+   public String getPagelist(@PageableDefault(page=1) Pageable pageable,
+		   Model model) {
+	   Page<BoardDTO> boardDTOList = boardservice.findListAll(pageable);
+	   
+	   //하단페이지블럭만들기
+	   int blockLimit = 10; //하단에 보여줄 페이지 개수
+	   
+	   //시작페이지 1, 11, 21                ex. 12/10 =1.2 ->2.2 -> 2 -1 * 10 + 1 =11
+	   int startPage = ((int)(Math.ceil((double)pageable.getPageNumber() / blockLimit)) -1) *blockLimit+1;
+	   //마지막페이지 10 ,20 ,30 ex 12page -> 12가마지막 
+	   int endPage = (startPage+blockLimit -1) > boardDTOList.getTotalPages() ? 
+			   boardDTOList.getTotalPages() : (startPage+blockLimit -1)  ;
+	   
+	   model.addAttribute("startPage", startPage);
+	   model.addAttribute("endPage", endPage);
+	   model.addAttribute("boardlist", boardDTOList);
+	   return"/board/pagelist";
    }
    
    @GetMapping("/delete/{id}")

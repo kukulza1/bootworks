@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -74,7 +75,7 @@ public class QueryMethodTest {
 			log.info(board.toString());
 		}
 	}*/
-	@Test
+	/*@Test
 	public void testFindByTitleContaining() {
 		Pageable paging = PageRequest.of(1, 10,Sort.by(Sort.Direction.DESC,"id"));
 		
@@ -84,6 +85,42 @@ public class QueryMethodTest {
 		List<Board> boardList = 
 				   boardRepository.findByTitleContaining("제목",paging);
 		boardList.forEach(board -> log.info(board.toString()));
+	}*/
+	@Test
+	public void testJpaPaging() {
+		Pageable paging = PageRequest.of(0, 10,Sort.Direction.DESC,"id");
+		
+		Page<Board> pageInfo =
+				   boardRepository.findByTitleContaining("제목", paging);
+		//number(페이지번호),totalPages,totalElements,content
+		log.info("페이지번호"+pageInfo.getNumber());
+		log.info("페이지당 게시글 수"+pageInfo.getSize());
+		log.info("게시글총개수"+pageInfo.getTotalElements());
+		log.info("총페이지수"+pageInfo.getTotalPages());
+		
+		List<Board> boardlist = pageInfo.getContent(); //게시글목록내용
+		for(Board board : boardlist) {
+			log.info(board.toString());
+		}
 	}
-	
+	 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

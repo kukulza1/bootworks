@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>글목록</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+   <div id="container">
+         <h2>글목록</h2>
+          <table class="wrap">
+           <thead>
+            <tr>
+             <th>번호</th>
+             <th>글제목</th>
+             <th>글쓴이</th>
+             <th>작성일</th>
+             <th>조회수</th>            
+            </tr>
+           </thead>
+           
+           <tbody>
+            <tr th:each="board: ${boardlist}">
+             <td th:text="${board.id}"></td>
+             <td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>          
+             <td th:text="${board.boardWriter}"></td>
+             <td th:text="${#temporals.format(board.createdDate, 
+                         'yyyy-MM-dd HH:mm')}"></td>
+             <td th:text="${board.boardhit}"></td>
+            
+             
+             
+             
+                    
+            </tr>
+            <a th:href="@{/}">목록으로</a>
+           </tbody>          
+          </table> 
+          <!-- 페이지영역 -->      
+          <div class="pagination">
+          <!-- 이전 페이지 -->
+          <!-- 2page 클릭하면 db페이지는1page -->
+          <a th:href="${boardlist.first}? '#' :@{/board/pagelist(page=${boardlist.number})} ">Prev</a>
+          <!-- 페이지번호블럭 -->
+          <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+           <!-- <span th:text="${page}"></span>-->
+           <!-- /pagelist?page=1 -->
+           <a th:href="@{/board/pagelist(page=${page})}" th:text="${page}"></a>
+          </span>
+          <!-- 2page - > 3page 실제페이지는 1page -->
+                  <!-- 다음 페이지 -->
+          <a th:href="${boardlist.last}? '#' :@{/board/pagelist(page=${boardlist.number+2})}">Next</a>
+          </div>   
+          <!-- 글쓰기버튼 -->     
+          <div class="btn_write">
+           <a th:href="@{/board/write}"><button type="button">글쓰기</button></a>     
+          </div>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

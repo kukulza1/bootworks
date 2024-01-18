@@ -42,6 +42,9 @@ a{text-decoration: none;}
 .tbl_write th, td{border: 1px solid #ccc; padding: 6px;}
 .tbl_write input[type="text"]{width: 500px; height: 25px;}
 .tbl_write textarea{width: 500px; height: 300px;}
+.pagination{margin:10px; text-align:center;}
+.pagination a{margin:10px; }
+.btn_write{text-align:left; padding-left:100px;}
 
 
               

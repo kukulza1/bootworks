@@ -34,6 +34,8 @@ public class BoardDTO {
 	
 	private LocalDateTime createdDate;
 	private LocalDateTime updatedDate;
+	
+	
 		
 	public static BoardDTO tosaveEntity2(Board board) {		
 		BoardDTO boardDTO = BoardDTO.builder()
@@ -48,4 +50,7 @@ public class BoardDTO {
 		return boardDTO;
 	}
 
+
+
+	
 }
