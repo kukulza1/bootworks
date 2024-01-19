@@ -20,7 +20,7 @@ public class BoardServiceTest {
 			boardDTO.setBoardWriter("테스터");
 			boardDTO.setBoardContent("테스트내용"+i);
 			
-			boardService.save(boardDTO);
+			boardService.save2(boardDTO);
 		}
 	}
 

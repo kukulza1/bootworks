@@ -9,7 +9,7 @@
 <body>
 	<div id="container">
 		<h2>글쓰기</h2>
-		<form th:action="@{/board/write}" method="post"
+		<form th:action="@{/board/write}" method="post" enctype="multipart/form-data"
 		   th:object="${boardDTO}"> 
 		 
 		   <div th:if="${#fields.hasAnyErrors()}">
@@ -27,6 +27,11 @@
 		   <tr>
 		   <td><input type="text" name="boardWriter" placeholder="글쓴이"
 		         th:value="${session.sessionName}"></td>
+		   </tr>
+		   
+		   <tr>
+		   <td><input type="file" name="boardFile"
+		         ></td>
 		   </tr>
 		   
 		   <tr>

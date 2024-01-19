@@ -37,27 +37,35 @@ public class Board extends BaseEntity{
 	@Column
 	private Integer boardhit;
 	
-	public static Board tosaveEntity(BoardDTO boardDTO) {
-		Board board = Board.builder()
-				
+	@Column
+	private String filename;
+	
+	@Column
+	private String filepath;
+	
+	public static Board tosaveEntity(BoardDTO boardDTO) { //인서트
+		Board board = Board.builder()				
 				      .id(boardDTO.getId())
 				      .boardTitle(boardDTO.getBoardTitle())
 				      .boardWriter(boardDTO.getBoardWriter())
 				      .boardContent(boardDTO.getBoardContent())
+				      .filename(boardDTO.getFilename())
+				      .filepath(boardDTO.getFilepath())
 				      .boardhit(0)
 				      .build();
 		return board;
 		
 	}
-	public static Board tosaveEntity2(BoardDTO boardDTO) {
+	public static Board tosaveEntity2(BoardDTO boardDTO) { //수정
 		Board board = Board.builder()
 				
 				.id(boardDTO.getId())
 				.boardTitle(boardDTO.getBoardTitle())
 				.boardWriter(boardDTO.getBoardWriter())
 				.boardContent(boardDTO.getBoardContent())
-				.boardhit(boardDTO.getBoardhit())
-				
+				.filename(boardDTO.getFilename())
+			     .filepath(boardDTO.getFilepath())
+				.boardhit(0)				
 				.build();
 		return board;
 		

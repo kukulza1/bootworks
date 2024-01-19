@@ -26,6 +26,10 @@ a{text-decoration: none;}
 .login input{padding: 5px;}
 .error{color: red;}
 
+.searchform{width:700px; margin:0 auto; text-align:right;
+             margin-bottom:12px;}
+.sel_type{padding:1px;}
+
  /*게시판 스타일 */
 .wrap{
     width: 1000px;

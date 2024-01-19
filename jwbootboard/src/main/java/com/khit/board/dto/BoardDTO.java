@@ -28,14 +28,12 @@ public class BoardDTO {
 	@NotEmpty(message = "내용을적어주세요.")
 	@Size(max = 2000)
 	private String boardContent;
-	
-	
+		
 	private Integer boardhit;	
-	
+	private String filename;
+	private String filepath;
 	private LocalDateTime createdDate;
 	private LocalDateTime updatedDate;
-	
-	
 		
 	public static BoardDTO tosaveEntity2(Board board) {		
 		BoardDTO boardDTO = BoardDTO.builder()
@@ -43,6 +41,8 @@ public class BoardDTO {
 				.boardTitle(board.getBoardTitle())
 				.boardWriter(board.getBoardWriter())
 				.boardContent(board.getBoardContent())
+				.filename(board.getFilename())
+			    .filepath(board.getFilepath())
 				.boardhit(board.getBoardhit())
 				.createdDate(board.getCreatedDate())	
 				.updatedDate(board.getUpdatedDate())

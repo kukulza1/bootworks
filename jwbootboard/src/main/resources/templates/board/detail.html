@@ -24,7 +24,14 @@
                 </tr>
                 <tr>
                     <td>
-                        <textarea rows="5" cols="50" name="boardContent" th:text="${board.boardContent}" readonly></textarea>
+                        <input type="text" name="filename" th:value="${board.filename}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea rows="5" cols="50" name="boardContent" th:text="${board.boardContent}" readonly>                   
+                        </textarea>
+                         <img th:src="@{${board.filepath}}">
                     </td>
                 </tr>
                 <tr>
@@ -32,6 +39,7 @@
                         <span th:text="'조회수:' + ${board.boardhit}" ></span>
                     </td>
                 </tr>
+             
                 
                 <tr>
                     <td>
@@ -52,7 +60,8 @@
                         <a th:href="@{|/board/delete/${board.id}|}"><button type="button" 
                         onclick="return confirm('삭제하시겠습니까?')"> 삭제</button></a>
                         </span>
-                        <a th:href="@{/board/list}"><button type="button">목록</button></a>
+                        <!-- pageable클래스의 page >> getpagenumber() -->
+                        <a th:href="@{/board/pagelist(page=${page})}"><button type="button">목록</button></a>
                     </td>
                 </tr>
             </tbody>
