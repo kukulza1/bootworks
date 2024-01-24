@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+#container{width: 1200px; margin:30px auto;}
+h2{color: #b00; text-align: center}
+ul li{list-style: none; margin: 16px;}
+a{text-decoration: none;}
+
+/* index 스타일 */
+.main-img{text-align: center;}
+.menu{text-align: center;}
+.auth{text-align: center;}
+
+/* join 스타일 */
+.joinform{width: 420px; margin: 0 auto;}
+.joinform label{width: 100px; float: left;}
+.joinform input{padding: 4px;}
+
+/* tbl_list 스타일 */
+.searchform{width: 700px; margin: 0 auto; text-align: right;
+  margin-bottom: 12px;}
+.sel_type{padding: 4px;}
+.tbl_list{width: 700px; margin: 0 auto; border-collapse: collapse;}
+.tbl_list th, td{border: 1px solid #ccc; padding: 8px;
+  text-align: center;}
+.tbl_list input[type="text"]{width: 680px; height: 25px}
+.tbl_list textarea{width: 680px; height: 300px}
+.pagination{margin: 10px; text-align: center;}
+.pagination a{padding: 4px; text-decoration: underline;
+  color: #555;}
+.pagination span.current_page{color: #b00;}
+.btn_write{text-align: left; padding-left: 250px;}
+
+/* member detail 스타일 */  
+.detail{width: 420px; margin: 0 auto;}
+.detail label{width: 100px; float: left;}
+.detail input{padding: 4px;}
+
+/* login 스타일 */
+.error{color: #f00; font-size: 0.9em}
+
+.writeform{width: 800px; margin: 0 auto;}
+.alert-danger{padding-left: 60px; color: #b00;}
+  
+/*header스타일*/
+header{height: 100px; background-color:aquamarine;}
+header #logo{width: 250px; float: left; line-height: 100px;}
+#logo h2 a{color:tomato; padding-left: 20px; font-style: italic;}
+header nav{width: 900px; float: right;}
+#topmenu{line-height: 100px; padding-left: 150px;}
+#topmenu li{float: left; margin:0 20px;}
+#topmenu li a{color:black ;}
+#topmenu li a:hover{color:indigo;}
+  
+  /*footer스타일*/
+footer{height: 80px; border-top:2px solid #000; clear: both; margin-top:150px;}
+#bottommenu{margin:10px 20px;}
+#bottommenu li{float: left; margin:0 20px; padding: 0 10px;
+border-right: 1.5px solid #ccc;}
+#bottom li a{color:#444;}
+#bottom li:last-child{border:none;}
+  
+  /*회원목록스타일*/
+#memberlist{width: 900px; margin:20px auto;}
+#memberlist .logout{text-align: center;}
+#memberlist table{width: 900px; margin:20px auto; 
+                   border-collapse: collapse;}
+#memberlist table th, td, tr{border: 1px solid black; 
+ text-align: center;}
+
+table th, td{padding: 10px;}
+table thead{text-align: center; background: #ccc;}
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>글목록</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{/layout/header::header-fragment}"></div>
+	<div class="wrap">
+		<h2>글목록</h2>
+			<table class="tbl_write">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>글내용</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="board: ${boardList}">
+						<td th:text="${board.id}"></td>
+<!--						<td th:text="${board.title}"></td>-->
+						<td>
+<!--							|쓰는이유 안쓰면 문자열로 들어가는데 |로 닫아주면 숫자로 유지가 됨-->
+							<a th:href="@{|/board/${board.id}|}" th:text="${board.title}"></a>
+						</td>
+						<td th:text="${board.content}"></td>
+						<td>
+							<span th:if="${board.updatedDate} != null" th:text="'수정일 ' + ${#dates.format(board.updatedDate, 'yyyy-MM-dd HH:mm')}"></span>
+							<span th:unless="${board.updatedDate} != null" th:text="'작성일 ' +${#dates.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+						</td>
+    				</tr>
+				</tbody>
+			</table>
+		<a th:href="@{/board/write}"><button type="button">글쓰기</button></a>
+		<a th:href="@{/}"><button type="button">Home</button></a>
+	</div>
+<div th:replace="~{/layout/footer::footer-fragment}"></div>
+</body>
+</html>
