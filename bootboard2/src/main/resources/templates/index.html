@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Index...</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -20,8 +21,17 @@
 	    	<a th:href="@{/board/list}">글목록</a>&nbsp; &nbsp;
 	    	<a th:href="@{/auth/main}">인증메인</a>&nbsp; &nbsp;
 	    </div>
+	    <div class="weader">
+	    <h2>오늘의날씨</h2>
+        <h3 class="result">
+         <!-- 20240125,0600,-9.1 -->
+            </h3>
+	    </div>
 	</div>
 	<!-- footer.html 연결 -->
 	<div th:replace="~{/layout/footer::footer-fragment}"></div>
+	 <script src="/js/weader.js">
+	 
+  </script>
 </body>
 </html>

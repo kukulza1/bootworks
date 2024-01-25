@@ -28,7 +28,7 @@ public class PasswordEncoderTest {
 		
 		memberRepository.save(member);
 	}*/
-	
+	/*
 	@Test
 	public void testInsertadmin() {
 		//관리자
@@ -39,6 +39,6 @@ public class PasswordEncoderTest {
 		member2.setRole(Role.ADMIN);
 		
 		memberRepository.save(member2);
-	}
+	}*/
 
 }
