@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resume Form</title>
+</head>
+<body>
+
+<form action="@{/resume/resume}" method="post" th:object="${resumeDTO}">
+    <!-- Hidden field for resumeId -->
+    <input type="hidden" th:field="*{resumeId}" />
+
+    <!-- Other fields -->
+    <label for="education">Education:</label>
+    <input type="text" th:field="*{education}" />
+    
+    <label for="career">Career:</label>
+    <input type="text" th:field="*{career}" />
+    
+    <label for="license">License:</label>
+    <input type="text" th:field="*{license}" />
+    
+    <label for="specialNote">Special Note:</label>
+    <input type="text" th:field="*{specialNote}" />
+    
+    <label for="content">Content:</label>
+    <textarea th:field="*{content}"></textarea>
+    
+    <label for="r_picture">Picture:</label>
+    <input type="text" th:field="*{r_picture}" />
+    
+   
+    
+    <!-- MemberId field (assuming it's a dropdown, you may adjust accordingly) -->
+    <label for="memberId">Member:</label>
+    <select th:field="*{memberId}">
+        <!-- Populate the options based on your data -->
+        <option th:each="member : ${members}" th:value="${member.memberId}" th:text="${member.memberName}" />
+    </select>
+
+    <!-- Submit button -->
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

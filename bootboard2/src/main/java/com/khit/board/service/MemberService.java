@@ -36,7 +36,7 @@ public class MemberService {
 		//2.권한설정
 		String encPw =pwencoder.encode(member.getPassword());
 		member.setPassword(encPw);
-		member.setRole(Role.Member);
+		member.setRole(Role.MEMBER);
       memberRepository.save(member);		
 	}
 

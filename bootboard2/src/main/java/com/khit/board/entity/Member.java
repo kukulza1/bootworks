@@ -47,7 +47,6 @@ public class Member extends BaseEntity{
 	//Board와 관계 매핑
 	//주인 설정(많은쪽이-board 주인) 
 	//cascade : 참조된 객체가 삭제되면 참조하는 객체도 삭제됨
-	@OneToMany(mappedBy="member",
-			cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="member", cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<>();
 }

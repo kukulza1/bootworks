@@ -64,7 +64,7 @@ public class MemberController {
 	@PostMapping("/member/join")
 	public String join(@ModelAttribute Member member) {
 		memberService.save(member);	
-		return"redirect:/member/login";
+		return"redirect:/";
 	}
 	
 	@GetMapping("/member/list")

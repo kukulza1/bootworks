@@ -36,9 +36,8 @@ public class BoardController {
 	//게시글 상세 보기
 	@GetMapping("/{id}")
 	public String getBoard(@PathVariable Integer id,
-			Model model,@AuthenticationPrincipal SecurityUser principal) {
+			Model model) {
 		Board board = boardService.findById(id);
-		board.setMember(principal.getMember());
 		model.addAttribute("board", board);
 		return "/board/detail";  //detail.html
 	}
@@ -48,9 +47,9 @@ public class BoardController {
 		return"/board/write";
 	}
 	@PostMapping("/write")
-	public String write(@ModelAttribute Board board
-		 ) {
-		
+	public String write(@ModelAttribute Board board,
+			@AuthenticationPrincipal SecurityUser principal) {
+		board.setMember(principal.getMember());
 		boardService.save(board);
 		return"redirect:/board/list";
 	}
@@ -62,17 +61,17 @@ public class BoardController {
 	}
 	
 	@GetMapping("/update/{id}")
-	public String updateform(@PathVariable Integer id,Model model,
-			@AuthenticationPrincipal SecurityUser principal	) {
+	public String updateform(@PathVariable Integer id,Model model) {
 		
 		Board board = boardService.findById(id);
-		 board.setMember(principal.getMember());
+		 
 		model.addAttribute("board", board);
 		return"/board/update";
 		
 	}
 	@PostMapping("/update")
-	public String update(@ModelAttribute Board board) {
+	public String update(@ModelAttribute Board board, @AuthenticationPrincipal SecurityUser principal) {
+		board.setMember(principal.getMember());
 		boardService.update(board);
 		return"redirect:/board/list";
 	}

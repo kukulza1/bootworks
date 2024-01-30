@@ -1,14 +1,14 @@
 package com.khit.board.repository;
 
-import com.khit.board.entity.Member;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.Optional;
 
-public interface MemberRepository extends JpaRepository<Member, Integer> {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    //select * from member where member_id = ?;
-    Optional<Member> findByMemberId(String string);
+import com.khit.board.entity.Member;
 
-//    void update(Member member);
+//JpaRepository에게 상속 받음
+public interface MemberRepository extends JpaRepository<Member, Integer>{
+	//select * from member where member_id = ?;
+	Optional<Member> findByMemberId(String string);
+
 }

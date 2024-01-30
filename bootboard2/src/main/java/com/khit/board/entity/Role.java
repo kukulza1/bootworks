@@ -1,7 +1,7 @@
 package com.khit.board.entity;
-//권한
+//권한 대문자로 지을것
 public enum Role {
-	Member,
-	ADMIN
+	MEMBER,
+	Admin
 
 }

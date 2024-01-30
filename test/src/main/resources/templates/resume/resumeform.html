@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resume Form</title>
+</head>
+<body>
+
+<form th:action="@{/resume/resume}" method="post" 
+  enctype="multipart/form-data">
+   
+    
+
+    <!-- Other fields -->
+    <label for="education">Education:</label>
+    <input type="text" name="education" />
+    
+    <label for="career">Career:</label>
+    <input type="text" name="career" />
+    
+    <label for="license">License:</label>
+    <input type="text" name="license"  />
+    
+    <label for="specialNote">Special Note:</label>
+    <input type="text" name="specialNote"  />
+    <label for="specialNote">memberid</label>
+    <input type="text" name="mid"  />
+    
+    <label for="content">Content:</label>
+    <textarea name="content" ></textarea>
+    
+   
+     <label for="r_picture">Picture:</label>
+    <input type="file" name="r_picture"/> <label for="r_picture"></label>
+    
+  
+    
+  
+
+    <!-- Submit button -->
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

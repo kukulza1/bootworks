@@ -1,26 +1,26 @@
 package com.khit.board.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
-import lombok.Getter;
+import java.sql.Timestamp;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.sql.Timestamp;
+import jakarta.persistence.Column;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
 
-@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 public class BaseEntity {
-
-    @Column(updatable = false)
-    @CreationTimestamp
-    private Timestamp createdDate;
-
-    @UpdateTimestamp
-    @Column(insertable = false)
-    private Timestamp updatedDate;
-
+	
+	@CreationTimestamp
+	@Column(updatable = false)
+	private Timestamp createdDate;  //등록일
+	
+	@UpdateTimestamp
+	@Column(insertable = false)
+	private Timestamp updatedDate;  //수정일
 }

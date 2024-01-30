@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>Index</title>
-	<link rel="stylesheet" th:href="@{/css/style.css}">
+<meta charset="UTF-8">
+<title>Index...</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- header.html 연결 -->
-<div th:replace="~{/layout/header::header-fragment}"></div>
+    <!-- footer.html 연결  -->
+	<div th:replace="~{header::header-fragment}"></div>
 	<div id="container">
-		<section id="main">
-		<h2>MyHome</h2>
+	   <section id="main">
+		<h1>MyHome에 오셨습니다...</h1>
 		<div class="main_img">
-			<img th:src="@{/images/B3.jpg}" alt="석민이형">
-		</div>
-		<div class="menu">
-				<a th:href="@{/main}">메인페이지</a>&nbsp;&nbsp;
-				<a th:href="@{/member/join}">회원가입</a>&nbsp;&nbsp;
-				<a th:href="@{/member/list}">회원목록</a>&nbsp;&nbsp;
-				<a th:href="@{/auth/main}">인증메인</a>&nbsp;&nbsp;
-				<a th:href="@{/board/list}">글목록</a>&nbsp;&nbsp;
-		</div>
-		</section>
+	    	<img th:src="@{/images/1.jpg}" alt="theater">
+	    </div>
+	    
+	    <div class="weather">
+		    <h2>오늘의 날씨</h2>
+			  <h3 class="result">
+			      <!-- 20240125(날짜), 0600(발표시각), -9.1(온도) -->
+			  </h3>
+		    </div>
+	  </section>
 	</div>
-<!-- footer.html 연결 -->
-<div th:replace="~{/layout/footer::footer-fragment}"></div>
+	<!-- footer.html 연결  -->
+	<div th:replace="~{footer::footer-fragment}"></div>
+<script src="/js/weather.js"></script>
 </body>
 </html>
